@@ -59,7 +59,7 @@ final class PdoEngine extends DatabaseEngine
             foreach ($parameters as $parameter) {
                 if ($parameter instanceof GeometryParameter) {
                     $statement->bindValue($index++, $parameter->data, $parameter->isBinary ? PDO::PARAM_LOB : PDO::PARAM_STR);
-                    $statement->bindValue($index++, $parameter->srid, PDO::PARAM_INT);
+                    $statement->bindValue($index++, 0, PDO::PARAM_INT);
                 } else {
                     $type = match (true) {
                         is_int($parameter) => PDO::PARAM_INT,
